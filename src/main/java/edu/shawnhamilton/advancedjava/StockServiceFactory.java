@@ -7,15 +7,21 @@ package edu.shawnhamilton.advancedjava;
  * Interface.
  */
 
-public class StockServiceFactory {
-    public static StockService getQuote(String symbol) {
-        if (symbol.equals("APPL"))
-            return new AppleStock();
-        if (symbol.equals("MCSFT"))
-            return new MicrosoftStock();
-        if (symbol.equals("GOGL"))
-            return new GoogleStock();
+import java.math.BigDecimal;
 
-        return null;
+public class StockServiceFactory {
+
+    public static StockService getQuote(String symbol) {
+
+        StockQuote quote = null;
+        if (symbol.equals("APPL"))
+            quote = new StockQuote("Apple", symbol, new BigDecimal(130.00));
+        if (symbol.equals("GOOG"))
+            quote = new StockQuote("Google", symbol, new BigDecimal(110.00));
+        if (symbol.equals("MICR"))
+            quote = new StockQuote("Microsoft", symbol, new BigDecimal(105.00));
+
+        return quote;
+
     }
 }
